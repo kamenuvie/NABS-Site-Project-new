@@ -1,0 +1,22 @@
+<!-- applications.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Applications</title>
+</head>
+<body>
+    <h1>Admission Applications</h1>
+    <div id="applications"></div>
+    <script>
+        fetch('/admission/applications')
+            .then(response => response.json())
+            .then(data => {
+                const applicationsDiv = document.getElementById('applications');
+                applicationsDiv.innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error fetching applications:', error));
+    </script>
+</body>
+</html>

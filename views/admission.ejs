@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>SCHOOL WEBSITE</title>
+</head>
+<body>
+    <!-- Your header and other content -->
+
+    <section class="register-section">
+        <div class="register-container1">
+            <!-- Your descriptive content -->
+
+            <div class="admission-form">
+                <form id="admissionForm">
+                    <div class="side1">
+                        <label for="fname">First Name:</label><br>
+                        <input type="text" id="fname" name="firstName" required><br>
+
+                        <label for="lname">Last Name:</label><br>
+                        <input type="text" id="lname" name="lastName" required><br>
+
+                        <label for="dob">Date of Birth:</label><br>
+                        <input type="date" id="dob" name="dateOfBirth" required><br>
+
+                        <label for="gender">Gender:</label><br>
+                        <select id="gender" name="gender" required>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select><br>
+
+                        <label for="nationality">Nationality:</label><br>
+                        <input type="text" id="nationality" name="nationality" required><br>
+
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" required><br>
+
+                        <label for="phone">Phone:</label><br>
+                        <input type="tel" id="phone" name="phone" required><br>
+
+                        <label for="address">Address:</label><br>
+                        <input type="text" id="address" name="address" required><br>
+
+                        <label for="parent-name">Parent's Name:</label><br>
+                        <input type="text" id="parent-name" name="parentName" required><br>
+                    </div> 
+                    <div class="side2">
+                        <label for="former-school">Former School:</label><br>
+                        <input type="text" id="former-school" name="formerSchool" required><br>
+
+                        <label for="health-info">Health Information:</label><br>
+                        <textarea id="health-info" name="healthInfo" rows="4" cols="30" required></textarea><br>
+
+                        <label for="registration-fee">Registration Fee:</label><br>
+                        <input type="number" id="registration-fee" name="registrationFee" required><br>
+                        <button type="submit">Submit Application</button>
+                    </div>
+                </form> <br><br>
+            </div> <br><br><br>
+            <!-- Other content -->
+        </div>
+    </section>
+
+    <footer>
+        <!-- Your footer content -->
+    </footer>
+
+    <script>
+        document.getElementById('admissionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch('/admission', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log('Success:', result);
+                alert('Admission form submitted successfully!');
+                // You can redirect or perform other actions upon successful submission
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting admission form.');
+            });
+        });
+    </script>
+</body>
+</html>

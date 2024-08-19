@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> NABS</title>
+    <link rel="stylesheet" href="scss/bootstrap.scss">
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+ <header>
+  <div class="container">
+    <div class="Navbar">
+      <img style="width: 4.7rem;  border-radius: 5px;" src="./site/assets/Images/natural brains.jpg" alt="anniversary">
+
+      <a href="#" class="brand">Natural-Brians  Academy</a>
+      <nav>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="News.html">News & Events</a></li>
+          <li><a href="register.html">Register with us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+ </header>
+ <section class="Register-section">
+  <h1>Welcome to Natural Brains Academy Admissions Portal</h1> <br>
+  <p>We are delighted that you are considering NABS for your educational journey. Our institution is dedicated to providing a comprehensive and enriching learning environment that fosters intellectual growth, creativity, and personal development.</p> <br>
+
+  <h2>Why Choose Us?</h2>
+  <h3>Welcome to NABS - Shaping Futures, One Child at a Time</h3>
+  <p>At NABS, we believe that every child is unique, with individual talents and potential waiting to be unlocked. Our mission is to provide a nurturing, stimulating, and supportive environment where each student can thrive academically, socially, and emotionally</p> <br><br>
+   <h3> Natural Brains Academy Pick up Form</h3>
+   <p> Please fill out this form carefully and ensure all required fields are completed.</p> <br>
+   <div class="form-section">
+    <form id="admission-form" action="forms.php" action="POST">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" class="form-control" id="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth *</label>
+        <input type="date" class="form-control" id="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender *</label>
+
+      <select class="form-control" id="gender" required>
+        <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+      </select>
+      <div class="form-group">
+        <label for="health-status">Health Status</label>
+        <input type="text" class="text-area " id="health-status" required >
+      </div>
+      <div class="form-group">
+        <label for="parentName">Parent's Full Name *</label>
+        <input type="text" class="form-control" id="parentName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="parentEmail">Parent's Email Address *</label>
+        <input type="email" class="form-control" id="parentEmail" required>
+      </div>
+
+      <div class="form-group">
+        <label for="parentPhone">Parent's Phone Number *</label>
+        <input type="tel" class="form-control" id="parentPhone" required>
+      </div>
+
+      </div>
+      <button>Submit</button>
+    </div>
+    </form>  <br>
+
+    <p>For any inquiries or assistance, please contact our admission office at +233 239 098 2478 or email us at info@naturalbrainsacademy.com.</p> <br>
+
+   </div>
+ </section>
+ <script>
+  document.getElementById('admission-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      try {
+          const response = await fetch('http://localhost:3000/admission', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          });
+          if (response.ok) {
+              alert('Application submitted successfully!');
+          } else {
+              alert('Error submitting application.');
+          }
+      } catch (error) {
+          alert('An error occurred while submitting the application.');
+          console.error('Error:', error);
+      }
+  });
+</script>
+
+
+
+ <footer>
+  <div class="footer-sec">
+      <div class="address">
+      <h4>Natural <br>
+          Brains <br>
+          Academy <br><br>
+      </h4>
+      <h4>Address </h4>
+      <h5> P.O BOX 4454, Amasaman</h5>
+      <h5>Tel: +233 239 098 2478</h5>
+  </div>
+  <div class="location">
+      <h4><a style="color: #f5efef;" href="https://maps.app.goo.gl/pZKKgKJkasbXsrBW7">Location</a> :Kpobiman Container</h4>
+      <h4>Main Campus: Treba</h4>
+      <h4>Our Motto :Descipline & Hardwork</h4>
+  </div>
+  <div class="other">
+      <h4>Contact Us</h4>
+      <h5>Tel: +233 239 098 2478</h5>
+      <h5>Email:  <a href="mailto:  ">  <i class="fa-solid fa-envelope"></i>  </a></h5>
+      <h5>Facebook: <a href="https://www.facebook.com/Natural-Brains-Academy-102110111265611"> <i class="fa-brands fa-facebook"></i> </a></h5>
+      <h5>Instagram: <a href="https://www.instagram.com/natural_brains_academy/"> <i class="fa-brands fa-instagram"></i> </a></h5>
+  </div>
+  </div>
+  <div class="copyright">
+      <h5 >Copyright &copy; 2024 Natural Brains Academy. All rights reserved.</h5>
+  </div>
+
+</footer>
+
+
+
+<script src="js/dist/util/focustrap.js"></script>
+
+</body>
+</html>
+
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $dob = htmlspecialchars($_POST['dob']);
+    $gender = htmlspecialchars($_POST['gender']);
+    $health_status = htmlspecialchars($_POST['health_status']);
+    $parent_name = htmlspecialchars($_POST['parent_name']);
+    $parent_email = htmlspecialchars($_POST['parent_email']);
+    $parent_phone = htmlspecialchars($_POST['parent_phone']);
+
+    $to = "your-email@example.com";  // Replace with your email address
+    $subject = "New Form Submission from $name";
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=utf-8\r\n";
+
+    $message = "Full Name: $name\n";
+    $message .= "Email Address: $email\n";
+    $message .= "Phone Number: $phone\n";
+    $message .= "Date of Birth: $dob\n";
+    $message .= "Gender: $gender\n";
+    $message .= "Health Status: $health_status\n";
+    $message .= "Parent's Full Name: $parent_name\n";
+    $message .= "Parent's Email Address: $parent_email\n";
+    $message .= "Parent's Phone Number: $parent_phone\n";
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Email sent successfully!";
+    } else {
+        echo "Failed to send email.";
+    }
+}
+?>
